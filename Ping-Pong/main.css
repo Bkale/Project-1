@@ -1,0 +1,48 @@
+.board{
+  border-left: 5px dotted black;
+  border-right: 5px dotted black;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  height: 600px;
+  width: 1200px;
+  position:relative;
+}
+
+#paddle1{
+  height: 30%;
+  width: 2%;
+  position: relative;
+  display: inline-block;
+}
+#player1{
+  height: 90%;
+  width: 100%;
+  background-color: red;
+  position: absolute;
+  top:0px;
+}
+
+#paddle2{
+  height: 30%;
+  width: 2%;
+  position: relative;
+  float: right;
+  display: inline-block;
+}
+#player2{
+  height: 90%;
+  width: 100%;
+  background-color: blue;
+  position: absolute;
+  top:0px;
+}
+
+#ball{
+      height: 6%;
+      border-radius: 50%;
+      width: 3%;
+      background-color: black;
+      position: absolute;
+      left: 580px;
+      top: 180px;
+}
