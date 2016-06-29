@@ -7,6 +7,8 @@ var player1 = document.getElementById('player1')
 
 var p1vertical = 0
 var p2vertical = 0
+
+
 function movement(e){
   //65:A 90:Z  38:UP 40:DOWN
   if(e.keyCode == 65){
@@ -40,23 +42,30 @@ function movement(e){
 
 
 }
-document.onkeydown = movement;
+// document.onkeydown = movement;
  //BALL MOVEMENT
 var ball;
 var MAX_BALL_X = 1200 - 48;
 var MAX_BALL_Y = 600 - 48;
 
-var SPEED = 12;
+var SPEED = 7;
 
 init()
 
 function init(){
+  player1 = document.getElementById("player1")
+  player1.posX = player1.offsetLeft;
+  player1.posY = player1.offsetTop;
+  player2 = document.getElementById("player2")
+  player2.posX = player2.offsetLeft;
+  player2.posY = player2.offsetTop;
   ball = document.getElementById("ball");
   ball.posX = ball.offsetLeft;
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
   setInterval(gameLoop,33);
+  document.onkeydown = movement;
 }
 
 function gameLoop(){
@@ -66,15 +75,25 @@ function gameLoop(){
 function moveBall(){
   ball.posX += ball.velX;
   ball.posY += ball.velY;
-
+  player1.posX = player1.offsetLeft;
+  player1.posY = player1.offsetTop;
+  player2.posX = player2.offsetLeft;
+  player2.posY = player2.offsetTop;
+   //left
   if(ball.posX <= 0){
     ball.posX = 0;
     ball.velX = -ball.velX;
+    console.log(ball.posY)
+    console.log(player1.posY)
   }
+  //right
   if( ball.posX >= MAX_BALL_X ) {
       ball.posX = MAX_BALL_X;
       ball.velX = -ball.velX;
+      console.log(ball.posY)
+      console.log(player2.posY)
   }
+
   if(ball.posY <= 0){
     ball.posY = 0;
     ball.velY = -ball.velY;
@@ -83,6 +102,18 @@ function moveBall(){
       ball.posY = MAX_BALL_Y;
       ball.velY = -ball.velY;
   }
+  // if(((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156)) ) && (ball.posX == player1.posX)){
+  //   ball.posX = 0;
+  //   ball.velX = -ball.velX;
+  //
+  // }
+  // if(((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156)) ) && (ball.posX == player2.posX)){
+  //   ball.posX = MAX_BALL_X;
+  //   ball.velX = -ball.velX;
+  //
+  // }
+
+
   ball.style.left = ball.posX +  "px";
   ball.style.top  = ball.posY + "px";
 
