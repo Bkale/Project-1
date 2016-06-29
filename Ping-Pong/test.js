@@ -48,7 +48,7 @@ var ball;
 var MAX_BALL_X = 1200 - 48;
 var MAX_BALL_Y = 600 - 48;
 
-var SPEED = 7;
+var SPEED = 12;
 
 init()
 
@@ -92,17 +92,18 @@ function moveBall(){
     console.log(ball.posX)
     // console.log(player1.posY + 156);
   }
+
   //right
   if( ball.posX >= MAX_BALL_X ) {
 
-      ball.posX = MAX_BALL_X;
-      ball.velX = -ball.velX;
-      //TEST CASES
+      // ball.posX = MAX_BALL_X;
+      // ball.velX = -ball.velX;
+      // //TEST CASES
       // console.log(ball.posY)
       // console.log(player2.posY)
       // console.log(player2.posY + 156)
-      // console.log("ball X = " + ball.posX)
-      // console.log("player 2 X = " + player2.posX)
+      console.log("ball X = " + ball.posX)
+      console.log("player 2 X = " + player2.posX)
   }
   //UP
   if(ball.posY <= 0){
@@ -115,17 +116,17 @@ function moveBall(){
       ball.velY = -ball.velY;
   }
 
-
+  //LEFT DONT TOUCH
   if((  ((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156))) &&  (ball.posX <= player1.posX)         )){
     ball.posX = 0;
     ball.velX = -ball.velX;
   }
 
-  // if(((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156)) ) && (ball.posX == player2.posX)){
-  //   ball.posX = MAX_BALL_X;
-  //   ball.velX = -ball.velX;
-  //   console.log("it comes here")
-  // }
+  if((  ((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156))) &&  (ball.posX >= player2.posX)         )){
+    ball.posX = MAX_BALL_X;
+    ball.velX = -ball.velX;
+    console.log("it comes here")
+  }
 
 
   ball.style.left = ball.posX +  "px";
