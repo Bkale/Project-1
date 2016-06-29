@@ -1,5 +1,7 @@
 
 document.addEventListener("DOMContentLoaded",function(){
+  var p1Score = 0;
+  var p2Score = 0;
 //PADDLE CODE
 var paddle1 = document.getElementById("paddle1")
 var player1 = document.getElementById('player1')
@@ -48,7 +50,7 @@ var ball;
 var MAX_BALL_X = 1200 - 48;
 var MAX_BALL_Y = 600 - 48;
 
-var SPEED = 12;
+var SPEED = 1;
 
 init()
 
@@ -69,7 +71,14 @@ function init(){
 }
 
 function gameLoop(){
+  if(gameOver() == true){
+    console.log("Game over bitch");
+    return
+  }else{
   moveBall()
+}
+return
+// prompt("Wanna play again?")
 }
 
 function moveBall(){
@@ -82,28 +91,25 @@ function moveBall(){
 
 
    //left
-  if(ball.posX <= 0){
-    // ball.posX = 0;
-    // ball.velX = -ball.velX;
+  if(ball.posX < 0){
+    ball.posX = 450;
+     p2Score += 1;
+     console.log(ball.posX, MAX_BALL_X);
+     console.log("P2Score = " + p2Score);
+     return;
+    // console.log(p2Score);
 
-    // console.log(((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156)) ));
-    // console.log((ball.posX == player1.posX));
-    // console.log(player1.posY)
-    console.log(ball.posX)
-    // console.log(player1.posY + 156);
   }
 
   //right
-  if( ball.posX >= MAX_BALL_X ) {
+  if( ball.posX > MAX_BALL_X ) {
 
-      // ball.posX = MAX_BALL_X;
-      // ball.velX = -ball.velX;
-      // //TEST CASES
-      // console.log(ball.posY)
-      // console.log(player2.posY)
-      // console.log(player2.posY + 156)
-      console.log("ball X = " + ball.posX)
-      console.log("player 2 X = " + player2.posX)
+   ball.posX = 450;
+   p1Score += 1;
+   console.log(ball.posX, MAX_BALL_X);
+   console.log("P1Score = " + p1Score);
+   return;
+  //  console.log(p1Score);
   }
   //UP
   if(ball.posY <= 0){
@@ -116,16 +122,15 @@ function moveBall(){
       ball.velY = -ball.velY;
   }
 
-  //LEFT DONT TOUCH
+  //LEFT PADDLE
   if((  ((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156))) &&  (ball.posX <= player1.posX)         )){
     ball.posX = 0;
     ball.velX = -ball.velX;
   }
-
+ //RIGHT PADDLE
   if((  ((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156))) &&  (ball.posX >= player2.posX)         )){
     ball.posX = MAX_BALL_X;
     ball.velX = -ball.velX;
-    console.log("it comes here")
   }
 
 
@@ -134,25 +139,13 @@ function moveBall(){
 
 }
 
-
-
-//source http://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
-// document.onkeydown = function(e) {
-//   switch (e.keyCode) {
-//       case 37:
-//           alert('left');
-//           break;
-//       case 38:
-//           alert('up')
-//           break;
-//       case 39:
-//           alert('right');
-//           break;
-//       case 40:
-//           alert('down');
-//           break;
-//   }
-// };
+function gameOver(){
+  if(p1Score == 5 || p2Score == 5){
+    return true
+  }else {
+    return false
+  }
+}
 
 
 
