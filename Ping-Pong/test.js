@@ -66,7 +66,7 @@ function init(){
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
-  setInterval(gameLoop,33);
+  setInterval(gameLoop,9);
   document.onkeydown = movement;
 }
 
@@ -93,10 +93,10 @@ function moveBall(){
    //left
   if(ball.posX < 0){
     ball.posX = 450;
-     p2Score += 1;
-     console.log(ball.posX, MAX_BALL_X);
-     console.log("P2Score = " + p2Score);
-     return;
+    p2Score += 1;
+    var p2S = document.querySelector(".p2Score");
+    p1S.innerText = p2Score;
+    return;
     // console.log(p2Score);
 
   }
@@ -106,8 +106,8 @@ function moveBall(){
 
    ball.posX = 450;
    p1Score += 1;
-   console.log(ball.posX, MAX_BALL_X);
-   console.log("P1Score = " + p1Score);
+   var p1S = document.querySelector(".p1Score");
+   p1S.innerText = p1Score;
    return;
   //  console.log(p1Score);
   }
