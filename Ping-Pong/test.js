@@ -77,40 +77,54 @@ function moveBall(){
   ball.posY += ball.velY;
   player1.posX = player1.offsetLeft;
   player1.posY = player1.offsetTop;
-  player2.posX = player2.offsetLeft;
+  player2.posX = MAX_BALL_X;
   player2.posY = player2.offsetTop;
+
+
    //left
   if(ball.posX <= 0){
-    ball.posX = 0;
-    ball.velX = -ball.velX;
-    console.log(ball.posY)
-    console.log(player1.posY)
+    // ball.posX = 0;
+    // ball.velX = -ball.velX;
+
+    // console.log(((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156)) ));
+    // console.log((ball.posX == player1.posX));
+    // console.log(player1.posY)
+    console.log(ball.posX)
+    // console.log(player1.posY + 156);
   }
   //right
   if( ball.posX >= MAX_BALL_X ) {
+
       ball.posX = MAX_BALL_X;
       ball.velX = -ball.velX;
-      console.log(ball.posY)
-      console.log(player2.posY)
+      //TEST CASES
+      // console.log(ball.posY)
+      // console.log(player2.posY)
+      // console.log(player2.posY + 156)
+      // console.log("ball X = " + ball.posX)
+      // console.log("player 2 X = " + player2.posX)
   }
-
+  //UP
   if(ball.posY <= 0){
     ball.posY = 0;
     ball.velY = -ball.velY;
   }
+  //DOWN
   if( ball.posY >= MAX_BALL_Y ) {
       ball.posY = MAX_BALL_Y;
       ball.velY = -ball.velY;
   }
-  // if(((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156)) ) && (ball.posX == player1.posX)){
-  //   ball.posX = 0;
-  //   ball.velX = -ball.velX;
-  //
-  // }
+
+
+  if((  ((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156))) &&  (ball.posX <= player1.posX)         )){
+    ball.posX = 0;
+    ball.velX = -ball.velX;
+  }
+
   // if(((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156)) ) && (ball.posX == player2.posX)){
   //   ball.posX = MAX_BALL_X;
   //   ball.velX = -ball.velX;
-  //
+  //   console.log("it comes here")
   // }
 
 
