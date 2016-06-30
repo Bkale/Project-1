@@ -14,31 +14,31 @@ var p2vertical = 0
 function movement(e){
   //65:A 90:Z  38:UP 40:DOWN
   if(e.keyCode == 65){
-    p1vertical -= 12;
+    p1vertical -= 15;
     player1.style.top = p1vertical + "px";
     if(p1vertical <= 0){
-       p1vertical += 12
+       p1vertical += 15
     }
   }
   if(e.keyCode == 90){
-    p1vertical += 12;
+    p1vertical += 15;
     player1.style.top = p1vertical + "px";
     if(p1vertical >= 433){
-       p1vertical -= 12
+       p1vertical -= 15
      }
   }
   if(e.keyCode == 38){
-    p2vertical -= 12;
+    p2vertical -= 15;
     player2.style.top = p2vertical + "px";
     if(p2vertical <= 0){
-       p2vertical += 12
+       p2vertical += 15
     }
   }
   if(e.keyCode == 40){
-    p2vertical += 12;
+    p2vertical += 15;
     player2.style.top = p2vertical + "px";
     if(p2vertical >= 433){
-       p2vertical -= 12
+       p2vertical -= 15
      }
   }
 
@@ -50,7 +50,7 @@ var ball;
 var MAX_BALL_X = 1200 - 48;
 var MAX_BALL_Y = 600 - 48;
 
-var SPEED = 1;
+var SPEED = 2;
 
 init()
 
@@ -66,7 +66,7 @@ function init(){
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
-  setInterval(gameLoop,9);
+  setInterval(gameLoop,8);
   document.onkeydown = movement;
 }
 
@@ -92,10 +92,10 @@ function moveBall(){
 
    //left
   if(ball.posX < 0){
-    ball.posX = 450;
+    ball.posX = 550;
     p2Score += 1;
     var p2S = document.querySelector(".p2Score");
-    p1S.innerText = p2Score;
+    p2S.innerText = p2Score;
     return;
     // console.log(p2Score);
 
@@ -103,8 +103,7 @@ function moveBall(){
 
   //right
   if( ball.posX > MAX_BALL_X ) {
-
-   ball.posX = 450;
+   ball.posX = 550;
    p1Score += 1;
    var p1S = document.querySelector(".p1Score");
    p1S.innerText = p1Score;
@@ -151,3 +150,5 @@ function gameOver(){
 
 //contentLoaded Closing Tag DONT DELETE
 });
+//REFEREENCES
+//1: http://codentronix.com/2011/04/07/game-programming-with-javascript-html-and-css-introduction/

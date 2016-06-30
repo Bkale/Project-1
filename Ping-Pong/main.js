@@ -1,5 +1,7 @@
 
 document.addEventListener("DOMContentLoaded",function(){
+  var p1Score = 0;
+  var p2Score = 0;
 //PADDLE CODE
 var paddle1 = document.getElementById("paddle1")
 var player1 = document.getElementById('player1')
@@ -48,7 +50,7 @@ var ball;
 var MAX_BALL_X = 1200 - 48;
 var MAX_BALL_Y = 600 - 48;
 
-var SPEED = 12;
+var SPEED = 1;
 
 init()
 
@@ -56,66 +58,97 @@ function init(){
   player1 = document.getElementById("player1")
   player1.posX = player1.offsetLeft;
   player1.posY = player1.offsetTop;
+  player2 = document.getElementById("player2")
+  player2.posX = player2.offsetLeft;
+  player2.posY = player2.offsetTop;
   ball = document.getElementById("ball");
   ball.posX = ball.offsetLeft;
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
-  setInterval(gameLoop,33);
+  setInterval(gameLoop,10);
   document.onkeydown = movement;
 }
 
 function gameLoop(){
+  if(gameOver() == true){
+    console.log("Game over bitch");
+    return
+  }else{
   moveBall()
+}
+return
+// prompt("Wanna play again?")
 }
 
 function moveBall(){
   ball.posX += ball.velX;
   ball.posY += ball.velY;
+  player1.posX = player1.offsetLeft;
+  player1.posY = player1.offsetTop;
+  player2.posX = MAX_BALL_X;
+  player2.posY = player2.offsetTop;
 
-  if(ball.posX <= 0){
-    ball.posX = 0;
-    ball.velX = -ball.velX;
+
+   //left
+  if(ball.posX < 0){
+    ball.posX = 550;
+    p2Score += 1;
+    var p2S = document.querySelector(".p2Score");
+    p2S.innerText = p2Score;
+    return;
+    // console.log(p2Score);
+
   }
-  if( ball.posX >= MAX_BALL_X ) {
-      ball.posX = MAX_BALL_X;
-      ball.velX = -ball.velX;
+
+  //right
+  if( ball.posX > MAX_BALL_X ) {
+   ball.posX = 550;
+   p1Score += 1;
+   var p1S = document.querySelector(".p1Score");
+   p1S.innerText = p1Score;
+   return;
+  //  console.log(p1Score);
   }
+  //UP
   if(ball.posY <= 0){
     ball.posY = 0;
     ball.velY = -ball.velY;
   }
+  //DOWN
   if( ball.posY >= MAX_BALL_Y ) {
       ball.posY = MAX_BALL_Y;
       ball.velY = -ball.velY;
   }
+
+  //LEFT PADDLE
+  if((  ((ball.posY >= player1.posY)&& (ball.posY <= (player1.posY + 156))) &&  (ball.posX <= player1.posX)         )){
+    ball.posX = 0;
+    ball.velX = -ball.velX;
+  }
+ //RIGHT PADDLE
+  if((  ((ball.posY >= player2.posY)&& (ball.posY <= (player2.posY + 156))) &&  (ball.posX >= player2.posX)         )){
+    ball.posX = MAX_BALL_X;
+    ball.velX = -ball.velX;
+  }
+
 
   ball.style.left = ball.posX +  "px";
   ball.style.top  = ball.posY + "px";
 
 }
 
-
-
-//source http://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
-// document.onkeydown = function(e) {
-//   switch (e.keyCode) {
-//       case 37:
-//           alert('left');
-//           break;
-//       case 38:
-//           alert('up')
-//           break;
-//       case 39:
-//           alert('right');
-//           break;
-//       case 40:
-//           alert('down');
-//           break;
-//   }
-// };
+function gameOver(){
+  if(p1Score == 5 || p2Score == 5){
+    return true
+  }else {
+    return false
+  }
+}
 
 
 
 //contentLoaded Closing Tag DONT DELETE
 });
+//REFEREENCES
+//1: http://codentronix.com/2011/04/07/game-programming-with-javascript-html-and-css-introduction/
