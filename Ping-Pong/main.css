@@ -11,7 +11,7 @@
 
 #paddle1{
   height: 30%;
-  width: 2%;
+  width: 1%;
   position: relative;
   display: inline-block;
 }
@@ -25,7 +25,7 @@
 
 #paddle2{
   height: 30%;
-  width: 2%;
+  width: 1%;
   position: relative;
   float: right;
   display: inline-block;

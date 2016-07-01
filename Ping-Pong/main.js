@@ -14,31 +14,31 @@ var p2vertical = 0
 function movement(e){
   //65:A 90:Z  38:UP 40:DOWN
   if(e.keyCode == 65){
-    p1vertical -= 15;
+    p1vertical -= 20;
     player1.style.top = p1vertical + "px";
     if(p1vertical <= 0){
-       p1vertical += 15
+       p1vertical += 20
     }
   }
   if(e.keyCode == 90){
-    p1vertical += 15;
+    p1vertical += 20;
     player1.style.top = p1vertical + "px";
     if(p1vertical >= 433){
-       p1vertical -= 15
+       p1vertical -= 20
      }
   }
   if(e.keyCode == 38){
-    p2vertical -= 15;
+    p2vertical -= 20;
     player2.style.top = p2vertical + "px";
     if(p2vertical <= 0){
-       p2vertical += 15
+       p2vertical += 20
     }
   }
   if(e.keyCode == 40){
-    p2vertical += 15;
+    p2vertical += 20;
     player2.style.top = p2vertical + "px";
     if(p2vertical >= 433){
-       p2vertical -= 15
+       p2vertical -= 20
      }
   }
 
@@ -66,7 +66,7 @@ function init(){
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
-  setInterval(gameLoop,7);
+  setInterval(gameLoop,5);
   document.onkeydown = movement;
 }
 
@@ -138,7 +138,7 @@ function moveBall(){
 }
 
 function gameOver(){
-  if(p1Score == 5 || p2Score == 5){
+  if(p1Score == 8 || p2Score == 8){
     return true
   }else {
     return false
