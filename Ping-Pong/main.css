@@ -6,6 +6,7 @@
   height: 600px;
   width: 1200px;
   position:relative;
+  background: linear-gradient(to left, #403B4A , #E7E9BB);
 }
 
 #paddle1{
@@ -41,8 +42,66 @@
       height: 6%;
       border-radius: 50%;
       width: 3%;
-      background-color: black;
+      background-color: white;
       position: absolute;
       left: 580px;
       top: 180px;
+}
+.ScoreBoard{
+  width: 50%;
+  height: 10%;
+  background-color: yellow;
+  border-radius: 25px;
+  position: relative;
+  left: 250px;
+}
+#one
+{
+  max-width: 150px;
+  border: 1px blue;
+  margin: 0;
+  color: black;
+  /*background-color: grey;*/
+  position: relative;
+  left: 60px;
+  top: -6px;
+  opacity: .9;
+  border-radius: 25px;
+  font-size: 150%;
+  width: 110px;
+  display: inline-block;
+}
+#two
+{
+  max-width: 150px;
+  border: 1px blue;
+  margin: 0;
+  color: black;
+  /*background-color: grey;*/
+  position:relative;
+  top: -6px;
+  left: 250px;
+  opacity: .9;
+  border-radius: 25px;
+  font-size: 150%;
+  width: 110px;
+  display: inline-block;
+}
+
+.p1Score
+{
+  position:relative;
+  top: -2px;
+  left: 106px;
+  font-size: 50px;
+  display: inline-block;
+}
+
+.p2Score
+{
+  position:relative;
+  top: -2px;
+  left: 300px;
+  font-size: 50px;
+  display: inline-block;
 }

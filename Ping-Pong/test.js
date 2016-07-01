@@ -66,13 +66,13 @@ function init(){
   ball.posY = ball.offsetTop;
   ball.velX = SPEED;
   ball.velY = SPEED;
-  setInterval(gameLoop,8);
+  setInterval(gameLoop,7);
   document.onkeydown = movement;
 }
 
 function gameLoop(){
   if(gameOver() == true){
-    console.log("Game over bitch");
+    alert("Game Over");
     return
   }else{
   moveBall()
