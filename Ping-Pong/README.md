@@ -25,3 +25,6 @@ CONTROLS:
 SIMON SAYS game.
 
 NOT Finished.
+
+GAME LINK:
+https://bkale.github.io/Project-1/Ping-Pong/index.html
